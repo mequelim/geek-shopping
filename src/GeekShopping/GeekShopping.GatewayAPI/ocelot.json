@@ -1,0 +1,261 @@
+﻿{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/Products/GetAllProducts/",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7270
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Products/GetAllProducts/",
+            "UpstreamHttpMethod": [
+                "GET"
+            ]
+        },
+        {
+            "DownstreamPathTemplate": "/api/Products/GetProductById/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7270
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Products/GetProductById/{id}",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Products/CreateProduct",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7270
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Products/CreateProduct",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Products/UpdateProduct/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7270
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Products/UpdateProduct/{id}",
+            "UpstreamHttpMethod": [
+                "PUT"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Products/DeleteProduct/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7270
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Products/DeleteProduct/{id}",
+            "UpstreamHttpMethod": [
+                "DELETE"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/FindCartByUserId/{userId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/FindCartByUserId/{userId}",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/AddItemToCart",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/AddItemToCart",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/ApplyCoupon",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/ApplyCoupon",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/Checkout",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/Checkout",
+            "UpstreamHttpMethod": [
+                "POST"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/UpdateCart",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/UpdateCart",
+            "UpstreamHttpMethod": [
+                "PATCH"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/RemoveFromCart/{id}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/RemoveFromCart/{id}",
+            "UpstreamHttpMethod": [
+                "DELETE"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Cart/RemoveCoupon/{userId}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7134
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Cart/RemoveCoupon/{userId}",
+            "UpstreamHttpMethod": [
+                "DELETE"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        },
+        {
+            "DownstreamPathTemplate": "/api/Coupon/GetCouponByCouponCode/{couponCode}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7231
+                }
+            ],
+            "UpstreamPathTemplate": "/api/Coupon/GetCouponByCouponCode/{couponCode}",
+            "UpstreamHttpMethod": [
+                "GET"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": [
+                    "geek_shopping"
+                ]
+            }
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://localhost:7000"
+    }
+}

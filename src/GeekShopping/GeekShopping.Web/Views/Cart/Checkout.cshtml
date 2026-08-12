@@ -1,0 +1,133 @@
+﻿@model GeekShopping.Web.Models.CartViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@if(TempData["Error"] is not null)
+{
+    <div class="alert alert-warning" role="alert">@TempData["@Error"]</div>
+}
+
+@if(Model.CartDetails.Any())
+{
+    <form method="post">
+        <input asp-for="CartHeader.UserId" hidden />
+        <input asp-for="CartHeader.Id" hidden />
+        <input asp-for="CartHeader.CouponCode" hidden />
+        <input asp-for="CartHeader.DiscountTotal" hidden />
+        <input asp-for="CartHeader.PurchaseAmount" hidden />
+
+        <div>
+            <span class="text-warning" style="font-size: 25px">
+                Entre com os detalhes do pedido:
+            </span>
+
+            <br/>
+        </div>
+
+        <div class="border mt-4">
+            <div class="container row">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="col-form-label">Nome:</label>
+                            <input asp-for="CartHeader.FirstName" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="col-form-label">Sobrenome:</label>
+                            <input asp-for="CartHeader.LastName" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="col-form-label">E-mail:</label>
+                            <input asp-for="CartHeader.Email" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="col-form-label">Telefone:</label>
+                            <input asp-for="CartHeader.Phone" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="col-form-label">Número do Cartão:</label>
+                            <input asp-for="CartHeader.CardNumber" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="col-form-label">CVV:</label>
+                            <input asp-for="CartHeader.Cvv" class="form-control" />
+                        </div>
+
+                        <div class="col-12 pb-4">
+                            <label class="col-form-label">Data de Expiração (mês/ano):</label>
+                            <input asp-for="CartHeader.ExpiryMonthYear" class="form-control" placeholder="mm/aa" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="d-none d-lg-block">
+                                <div class="row text-danger">
+                                    <div class="col-6">Detalhes do produto</div>
+
+                                    <div class="col-3">Preço</div>
+
+                                    <div class="col-3">Quantidade</div>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            @foreach(CartDetailsViewModel item in Model.CartDetails)
+                            {
+                                <div class="row h-100">
+                                    <div class="col-6">
+                                        <span style="font-size: 20px">@item.Product.Name</span>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <span style="font-size: 17px">@item.Product.Price</span>
+                                    </div>
+
+                                    <div class="col-3">
+                                        <span style="font-size: 17px">@item.Product.Count</span>
+                                    </div>
+                                </div>
+
+                                <hr/>
+                            }
+
+                            <div class="row">
+                                <div class="col-12 text-right pr-4 text-danger">
+                                    Valor final: @($"{@Model.CartHeader.PurchaseAmount:c}")
+
+                                    <br />
+
+                                    @if(Model.CartHeader.DiscountTotal > 0)
+                                    {
+                                        <span class="text-success">
+                                            Desconto aplicado: @($"{@Model.CartHeader.DiscountTotal:c}")
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn-success form-control">
+                                        <span>Fazer pedido</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}

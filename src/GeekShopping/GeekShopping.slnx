@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/FrontEnd/">
+    <Project Path="GeekShopping.Web/GeekShopping.Web.csproj" />
+  </Folder>
+  <Folder Name="/Gateway/">
+    <Project Path="GeekShopping.GatewayAPI/GeekShopping.GatewayAPI.csproj" />
+  </Folder>
+  <Folder Name="/Integration/">
+    <Project Path="GeekShopping.MessageBus/GeekShopping.MessageBus.csproj" />
+  </Folder>
+  <Folder Name="/Payments/">
+    <Project Path="GeekShopping.PaymentProcessor/GeekShopping.PaymentProcessor.csproj" />
+  </Folder>
+  <Folder Name="/Services/">
+    <Project Path="GeekShopping.CartAPI/GeekShopping.CartAPI.csproj" Id="dc650570-c7a5-491c-85f2-6dcb2f2a5460" />
+    <Project Path="GeekShopping.DiscountCouponAPI/GeekShopping.DiscountCouponAPI.csproj" />
+    <Project Path="GeekShopping.DuendeIdentityServer/GeekShopping.DuendeIdentityServer.csproj" />
+    <Project Path="GeekShopping.Email/GeekShopping.Email.csproj" Id="24bf0b03-f554-45bd-89cf-8adf2e52ef04" />
+    <Project Path="GeekShopping.OrderAPI/GeekShopping.OrderAPI.csproj" />
+    <Project Path="GeekShopping.PaymentAPI/GeekShopping.PaymentAPI.csproj" Id="d470bc2a-e66f-4cb3-84ef-1e5e5fca6e7a" />
+    <Project Path="GeekShopping.ProductAPI/GeekShopping.ProductAPI.csproj" />
+  </Folder>
+</Solution>

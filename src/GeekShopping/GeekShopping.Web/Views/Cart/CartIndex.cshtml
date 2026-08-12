@@ -1,0 +1,135 @@
+﻿@model GeekShopping.Web.Models.CartViewModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@if(Model.CartDetails.Any())
+{
+    <form method="post">
+        <br/>
+
+        <input asp-for="CartHeader.UserId" hidden />
+        <input asp-for="CartHeader.Id" hidden />
+
+        <div>
+            <div class="card border-bottom mt-4 container">
+                <div class="card-header bg-dark text-light ml-0 row">
+                    <div class="col-6">
+                        <i class="fa fa-shopping-cart"></i> &nbsp;
+                        Carrinho
+                    </div>
+
+                    <div class="col-6 text-end">
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-outline-warning btn-sm">
+                            Continuar comprando
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="d-none d-lg-block">
+                        <div class="row text-info">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-5">Detalhes</div>
+                            <div class="col-lg-2">Preço</div>
+                            <div class="col-lg-2">Quantidade</div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    @foreach(CartDetailsViewModel item in Model.CartDetails)
+                    {
+                        <div class="row h-100">
+                            <div class="row text-info">
+                                <div class="col-4 col-md-2 text-center py-2">
+                                    <img
+                                        src="@item.Product.ImageUrl"
+                                        class="rounded"
+                                        width="100%"
+                                        alt="@item.Product.Name"
+                                    />
+                                </div>
+
+                                <div class="col-8 col-md-5">
+                                    <h5>@item.Product.Name</h5>
+
+                                    <div style="font-size: 11px">
+                                        @Html.Raw(@item.Product.Description)
+                                    </div>
+                                </div>
+
+                                <div class="col-3 col-md-2" style="font-size: 11px">
+                                    <span style="font-size: 17px">
+                                        @($"{@item.Product.Price:c}")
+                                    </span>
+                                </div>
+
+                                <div class="col-3 col-md-2">
+                                    <span style="font-size: 17px">@item.Count</span>
+                                </div>
+
+                                <div class="col-2 col-md-1">
+                                    <button type="submit" formaction="/Cart/Remove/@item.Id" class="btn btn-outline-danger">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <hr/>
+
+                    <div class="row">
+                        <div class="col-6">
+                            @if(string.IsNullOrEmpty(Model.CartHeader.CouponCode))
+                            {
+                                <span>Cupon:</span>
+                                <input asp-for="CartHeader.CouponCode" />
+                                <button type="submit" asp-action="ApplyCoupon" class="btn-success">Aplicar</button>
+                            }
+                            else
+                            {
+                                <span>Cupon:</span>
+                                <input asp-for="CartHeader.CouponCode" disabled />
+                                <button type="submit" asp-action="RemoveCoupon" class="btn-danger">Remover</button>
+                            }
+                        </div>
+
+                        <div class="col-6 end">
+                            <span class="text-danger" style="font-size: 21px">
+                                Valor final: @($"{@Model.CartHeader.PurchaseAmount:c}")
+                            </span>
+
+                            <br />
+
+                            @if(Model.CartHeader.DiscountTotal > 0)
+                            {
+                                <span class="text-success">
+                                    Desconto aplicado: @($"{@Model.CartHeader.DiscountTotal:c}")
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer row">
+                    <div class="col-6 col-md-3 offset-md-6"></div>
+
+                    <div class="col-6 col-md-3">
+                        <a asp-action="Checkout" class="btn btn-success btn-block form-control">
+                            <span>Checkout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div>
+        <p>Your cart is empty!</p>
+    </div>
+}
